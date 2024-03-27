@@ -4,7 +4,7 @@ import { DataSource, In } from 'typeorm';
 import { Seeder } from 'typeorm-extension';
 import * as postsData from '../../posts.json';
 
-export default class UserSeeder implements Seeder {
+export class Post1711533254670 implements Seeder {
   public async run(dataSource: DataSource): Promise<void> {
     await dataSource.query('TRUNCATE "tag" RESTART IDENTITY CASCADE;');
     await dataSource.query('TRUNCATE "post" RESTART IDENTITY CASCADE;');
