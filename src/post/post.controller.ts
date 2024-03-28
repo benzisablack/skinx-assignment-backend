@@ -1,6 +1,6 @@
 import { Controller, Get, HttpCode, HttpStatus, Query } from '@nestjs/common';
-import { PageOptionsDto } from 'src/dto/page-options.dto';
 import { Public } from '../decorators/public.decorator';
+import { PageOptionsDto } from '../dto/page-options.dto';
 import { PageDto } from '../dto/page.dto';
 import { Post } from '../entity/Post';
 import { PostService } from '../post/post.service';
