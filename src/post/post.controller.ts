@@ -1,16 +1,9 @@
-import {
-  Controller,
-  Get,
-  HttpCode,
-  HttpStatus,
-  Param,
-  Query,
-} from '@nestjs/common';
+import { Controller, Get, HttpCode, HttpStatus, Query } from '@nestjs/common';
 import { PageOptionsDto } from 'src/dto/page-options.dto';
-import { PageDto } from 'src/dto/page.dto';
-import { SearchPostRequestDto } from 'src/dto/post/searchRequest.dto';
-import { Post } from 'src/entity/Post';
-import { PostService } from './post.service';
+import { Public } from '../decorators/public.decorator';
+import { PageDto } from '../dto/page.dto';
+import { Post } from '../entity/Post';
+import { PostService } from '../post/post.service';
 
 @Controller('v1/post')
 export class PostController {
@@ -24,13 +17,9 @@ export class PostController {
     return await this.postService.findAll(pageOptionsDto);
   }
 
-  @Get('/search')
-  async getPostsByTags(@Query() searchPostRequestDto: SearchPostRequestDto) {
-    return await this.postService.findByTag(searchPostRequestDto);
-  }
-
-  @Get('/:id')
-  async getPosts(@Param('id') id: number) {
-    return await this.postService.findById(id);
+  @Public()
+  @Get('/get-tags')
+  async getTagsList() {
+    return await this.postService.findAllTag();
   }
 }
