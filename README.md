@@ -6,6 +6,13 @@
 $ npm install
 ```
 
+## Database Preparation
+```bash
+$ docker pull posgres
+
+$ docker run --name skinx-postgres -e POSTGRES_DB=skinx -p 5432:5432 -d postgres
+```
+
 ## Migration & Seed
 
 ```bash
